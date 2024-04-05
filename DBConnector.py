@@ -23,7 +23,7 @@ class DBConnector:
             "password": "!WhitmanMemo08?",
             "host": "127.0.0.1",
             "port": 3307,
-            "database": "soundarchive",
+            "database": "bluespot",
             "raise_on_warnings": True,
         }
         try:
@@ -42,3 +42,11 @@ class DBConnector:
         print("<<CLOSING>> connection to MySQL\n\n\n\n")
         self.cnx.close()
         self.cursor.close()
+
+def main():
+    
+    db = DBConnector()
+    db.open_connection()
+    db.close_connection()
+
+main()
