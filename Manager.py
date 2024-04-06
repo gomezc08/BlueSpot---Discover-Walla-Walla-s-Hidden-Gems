@@ -5,7 +5,15 @@ class Manager (DBConnector):
     """
     Focuses on handling operations within the system.
 
+    Attributes:
+        pass
     
+    Methods:
+        user_sign_up:  Adds new user information to the User table in the database.
+        upload_photo: Allows a specified user to upload a photo, which is then stored in the Photos table in the database.
+        comment: Allows valid users to comment on other users' photos.
+        rate: Allows any web viewer to rate a photo.
+        tags: Allows a user to add tag(s) to their photo.
     """
     def __init__(self):
         super().__init__()
@@ -29,43 +37,62 @@ class Manager (DBConnector):
         self.open_connection()
         
         # insert into database.
-        query = ("INSERT INTO Photo" "(PID, Username, Title, Description, DateUploaded, Image, Location)" "VALUES(%s, %s, %s, %s, %s, %s, %s)")    
-        query_data = (pid, username, title, description, date_uploaded, image, location)
-        self.cursor.execute(query, query_data)
-        self.cnx.commit()
-    
-    
-        self.close_connection()
-    
+        try:    
+            query = ("INSERT INTO Photo" "(PID, Username, Title, Description, DateUploaded, Image, Location)" "VALUES(%s, %s, %s, %s, %s, %s, %s)")    
+            query_data = (pid, username, title, description, date_uploaded, image, location)
+            self.cursor.execute(query, query_data)
+            self.cnx.commit()
+        
+        except Exception as e:
+            print(f"Error!!: {e}")
+
+        finally:
+            self.close_connection()
+            
     def comment(self, pid, daytime, username, content):
         self.open_connection()
         
-        query = ("INSERT INTO Comments" "(PID, DayTime, Username, Content)" "VALUES(%s, %s, %s, %s)")
-        query_data = (pid, daytime, username, content)
-        self.cursor.execute(query, query_data)
-        self.cnx.commit()
-        
-        self.close_connection()
+        try:
+            query = ("INSERT INTO Comments" "(PID, DayTime, Username, Content)" "VALUES(%s, %s, %s, %s)")
+            query_data = (pid, daytime, username, content)
+            self.cursor.execute(query, query_data)
+            self.cnx.commit()
+            
+        except Exception as e:
+            print(f"Error!!: {e}")
+
+        finally:
+            self.close_connection()
     
     def rate(self, avgRating, pid):
         self.open_connection()
         
-        query = ("UPDATE Photo SET AvgRating = %s WHERE PID = %s")
-        query_data = (avgRating, pid)
-        self.cursor.execute(query, query_data)
-        self.cnx.commit()
+        try:
+            query = ("UPDATE Photo SET AvgRating = %s WHERE PID = %s")
+            query_data = (avgRating, pid)
+            self.cursor.execute(query, query_data)
+            self.cnx.commit()
         
-        self.close_connection()
+        except Exception as e:
+            print(f"Error!!: {e}")
+
+        finally:
+            self.close_connection()
     
     def tags(self, pid, tag):
         self.open_connection()
         
-        query = ("INSERT INTO Tags" "(PID, Tag)" "VALUES(%s, %s)")
-        query_data = (pid, tag)
-        self.cursor.execute(query, query_data)
-        self.cnx.commit()
+        try:
+            query = ("INSERT INTO Tags" "(PID, Tag)" "VALUES(%s, %s)")
+            query_data = (pid, tag)
+            self.cursor.execute(query, query_data)
+            self.cnx.commit()
         
-        self.close_connection()
+        except Exception as e:
+            print(f"Error!!: {e}")
+
+        finally:
+            self.close_connection()
 
 def main():
     m = Manager()
@@ -75,5 +102,8 @@ def main():
     # m.rate(4.5, 1)
     # m.tags(1, "#dog")
     # m.tags(1, "#chris")
+    """
+    TODO: Create fake test script.
+    """
     
 main()
