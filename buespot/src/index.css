@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.top-right {
+  position: fixed;
+  top: 10px; 
+  right: 10px; 
+}
+
+.top-left {
+  position: fixed;
+  top: 10px; 
+  left: 10px; 
+}
+
+.anchor {
+  margin-left: 10px;
+}
+
+.anchor {
+  color: hsl(200, 100%, 50%);
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  cursor: pointer;
+  outline: none;
+  margin-right: 10px;
+}
