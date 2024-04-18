@@ -11,16 +11,19 @@ class DBConnector:
         close_connection: Closes the connection to Saturn's SQL database.
     """
 
-    def __init__(self):
+    def __init__(self, user, password, host):
         self.cnx = None
         self.cursor = None
+        self.user = user
+        self.password = password
+        self.host = host
 
     def open_connection(self):
         print("<<OPENING>> connection to MySQL")
         config = {
-            "user": "root",
-            "password": "!WhitmanMemo08?",
-            "host": "127.0.0.1",
+            "user": self.user,
+            "password": self.password,
+            "host": self.host,
             "port": 3307,
             "database": "bluespot",
             "raise_on_warnings": True,
@@ -43,8 +46,7 @@ class DBConnector:
         self.cursor.close()
 
 def main():
-    
-    db = DBConnector()
+    db = DBConnector("root", "!WhitmanMemo08?", "127.0.0.1")
     db.open_connection()
     db.close_connection()
 
