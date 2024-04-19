@@ -5,6 +5,11 @@ class DBConnector:
     Provides a streamlined interface for connecting to the MySQL Workbench/database.
 
     Attributes:
+        - cnx: The database connection object.
+        - cursor: The cursor object for executing SQL queries.
+        - user: The username used for connecting to the database.
+        - password: The password used for connecting to the database.
+        - host: The host address of the database.
 
     Methods:
         open_connection: Opens the connection to Saturn's SQL database.
@@ -50,4 +55,4 @@ def main():
     db.open_connection()
     db.close_connection()
 
-main()
+#main()
