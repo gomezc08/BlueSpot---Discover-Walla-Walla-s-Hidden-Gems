@@ -30,7 +30,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/dehotis/Desktop/BlueSpot---Discover-Walla-Walla-s-Hidden-Gems/bluespot-backend/env"
+set -gx VIRTUAL_ENV "/Users/dehotis/Desktop/BlueSpot---Discover-Walla-Walla-s-Hidden-Gems/backend/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
