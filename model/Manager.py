@@ -143,8 +143,11 @@ class Manager (DBConnector):
 
 
 def main():
-    m = Manager("root", "!WhitmanMemo08?", "127.0.0.1")
+    # m = Manager("root", "!WhitmanMemo08?", "127.0.0.1")
+    m = Manager("gomezc@localhost", "!NOsabes8", "127.0.0.1")
+    m.open_connection()
     # creating fake data.
+    """
     m.user_sign_up("shahad", "shah.gmail.com", "shaha", "dehoti")
     m.upload_photo(1, "shahad", "pic", "example of uploaded pic", datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "neural-network.jpg", "walla walla")
     m.comment(1, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "shahad", "amazing photo!")
@@ -175,5 +178,6 @@ def main():
 
     m.update_photo_avg_ratings()
     m.update_user_avg_ratings()
+    """
     
 main()
