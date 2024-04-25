@@ -14,8 +14,8 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #574ed0;
+  min-height: 10vh; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,6 +26,33 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.Image-container {
+  width: 33.33%; /* Each container takes one-third of the available width */
+  float: left; /* Float the containers left to display them horizontally */
+  box-sizing: border-box; /* Include padding and border in the container's total width */
+  padding: 10px; /* Add some padding around each image */
+  text-align: center; /* Center the content horizontally */
+  margin-top: 20px;
+}
+
+.Image-container img {
+  max-width: 100%; /* Maximum width will be the width of the screen */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Make the image a block element to remove any whitespace */
+}
+
+.Image-caption {
+  font-size: 14px; /* Adjust the font size of the caption */
+  margin-top: 5px; /* Add some space between the image and the caption */
+  color: aliceblue;
+}
+
+.Image-author {
+  font-style: italic; /* Make the author's name italic */
+  font-size: 12px; /* Adjust the font size of the author's name */
+  color: aliceblue; /* Change the color of the author's name */
 }
 
 @keyframes App-logo-spin {
