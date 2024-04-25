@@ -29,7 +29,7 @@ class DBConnector:
             "user": self.user,
             "password": self.password,
             "host": self.host,
-            "port": 3307,
+            "port": 3306,
             "database": "bluespot",
             "raise_on_warnings": True,
         }
