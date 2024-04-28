@@ -51,8 +51,7 @@ class DBConnector:
         self.cursor.close()
 
 def main():
-    db = DBConnector("root", "!WhitmanMemo08?", "127.0.0.1")
+    db = DBConnector("gomezc@localhost", "!NOsabes8", "127.0.0.1")
     db.open_connection()
-    db.close_connection()
 
-#main()
+main()

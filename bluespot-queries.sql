@@ -1,5 +1,6 @@
 USE bluespot;
 
+DELIMITER $$
 
 -- trigger for photo avg rating (s)
 
@@ -9,18 +10,17 @@ USE bluespot;
 
 -- display all the photos of a user (c)
 
-DROP PROCEDURE IF EXISTS DisplayUserPhotos;
+DROP PROCEDURE IF EXISTS DisplayUserPhotos$$
 CREATE PROCEDURE DisplayUserPhotos(IN user_name VARCHAR(50))
 BEGIN
     SELECT *
     FROM Photo
     WHERE Username = user_name;
-END;
-
+END$$
 
 -- display most popular users (based on ratings and number of photos) (c)
 
-DROP PROCEDURE IF EXISTS DisplayPopularUsers;
+DROP PROCEDURE IF EXISTS DisplayPopularUsers$$
 CREATE PROCEDURE DisplayPopularUsers()
 BEGIN
     SELECT bu.Username, bu.FirstName, bu.LastName, bu.AvgRating, COUNT(p.PID) AS NumPhotos,
@@ -30,4 +30,7 @@ BEGIN
     LEFT JOIN Photo p ON bu.Username = p.Username
     GROUP BY bu.Username
     ORDER BY PopularityScore DESC;
-END;
+END$$
+
+-- Reset delimiter
+DELIMITER ;
