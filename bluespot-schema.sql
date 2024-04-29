@@ -97,7 +97,7 @@ END;
 
 -- trigger for photo avg rating (s)
 DROP TRIGGER IF EXISTS CalculatePhotoAverageRating;
-CREATE TRIGGER calculate_average_rating
+CREATE TRIGGER CalculatePhotoAverageRating
 AFTER INSERT ON Ratings
 FOR EACH ROW
 BEGIN
