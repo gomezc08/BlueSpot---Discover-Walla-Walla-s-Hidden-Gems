@@ -3,17 +3,13 @@ USE bluespot;
 DELIMITER $$
 
 -- display all the photos that match 1 or more tags (s)
-DROP PROCEDURE IF EXISTS SearchPhotosByTags$$
-CREATE PROCEDURE SearchPhotosByTags(IN tag_list VARCHAR(200))
+DROP PROCEDURE IF EXISTS SearchPhotosByTag$$
+CREATE PROCEDURE SearchPhotosByTag(IN tag VARCHAR(50))
 BEGIN
-    DECLARE tag_condition VARCHAR(200);
-    SET tag_condition = CONCAT('SELECT DISTINCT p.* 
-                                FROM Photo p 
-                                JOIN Tags t ON p.PID = t.PID 
-                                WHERE t.Tag IN (', tag_list, ')');
-    PREPARE stmt FROM tag_condition;
-    EXECUTE stmt;
-    DEALLOCATE PREPARE stmt;
+    SELECT DISTINCT p.*
+    FROM Photo p
+    JOIN Tags t ON p.PID = t.PID
+    WHERE t.Tag = tag;
 END;
 $$
 
