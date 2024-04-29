@@ -95,4 +95,20 @@ BEGIN
 END;
 //
 
+-- trigger for photo avg rating (s)
+DROP TRIGGER IF EXISTS CalculatePhotoAverageRating;
+CREATE TRIGGER calculate_average_rating
+AFTER INSERT ON Ratings
+FOR EACH ROW
+BEGIN
+    DECLARE avg_rating DECIMAL(3, 1);
+    SELECT AVG(Rating) INTO avg_rating
+    FROM Ratings
+    WHERE PID = NEW.PID;
+    UPDATE Photo
+    SET AvgRating = avg_rating
+    WHERE PID = NEW.PID;
+END;
+//
+
 DELIMITER ;

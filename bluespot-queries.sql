@@ -2,11 +2,20 @@ USE bluespot;
 
 DELIMITER $$
 
--- trigger for photo avg rating (s)
-
-
 -- display all the photos that match 1 or more tags (s)
-
+DROP PROCEDURE IF EXISTS SearchPhotosByTags$$
+CREATE PROCEDURE SearchPhotosByTags(IN tag_list VARCHAR(200))
+BEGIN
+    DECLARE tag_condition VARCHAR(200);
+    SET tag_condition = CONCAT('SELECT DISTINCT p.* 
+                                FROM Photo p 
+                                JOIN Tags t ON p.PID = t.PID 
+                                WHERE t.Tag IN (', tag_list, ')');
+    PREPARE stmt FROM tag_condition;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
+END;
+$$
 
 -- display all the photos of a user (c)
 
@@ -17,6 +26,19 @@ BEGIN
     FROM Photo
     WHERE Username = user_name;
 END$$
+
+-- display most popular picture locations (s)
+
+DROP PROCEDURE IF EXISTS MostPopularLocation$$
+CREATE PROCEDURE MostPopularLocation()
+BEGIN
+    SELECT PicLocation, COUNT(*) AS NumPhotos
+    FROM Photo
+    GROUP BY PicLocation
+    ORDER BY NumPhotos DESC
+    LIMIT 1;
+END;
+$$
 
 -- display most popular users (based on ratings and number of photos) (c)
 
