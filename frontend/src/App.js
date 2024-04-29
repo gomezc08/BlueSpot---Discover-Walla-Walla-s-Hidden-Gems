@@ -27,7 +27,7 @@ export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h2 className='top-left'>Bluespot</h2>
+        <h2 className='top-left'>BlueSpot</h2>
         <div class="top-right">
           <LoginButton count={count} onClick={handleClick} />
           <SignUpButton count={count} onClick={handleClick} />
