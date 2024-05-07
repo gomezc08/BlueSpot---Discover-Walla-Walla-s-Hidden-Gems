@@ -36,18 +36,18 @@ export default function App() {
 
       <body>
         <div className='Image-container'>
-          <Photo />
-          <div className='Image-caption'>Walla Walla</div>
+          <Photo1 />
+          <div className='Image-caption'>Fields</div>
           <div className='Image-author'>Shahrom Dehoti</div>
         </div>
         <div className='Image-container'>
-          <Photo />
-          <div className='Image-caption'>Wheat Fields</div>
+          <Photo2 />
+          <div className='Image-caption'>The Blues</div>
           <div className='Image-author'>Chris Gomez</div>
         </div>
         <div className='Image-container'>
-          <Photo />
-          <div className='Image-caption'>The Blues</div>
+          <Photo3 />
+          <div className='Image-caption'>Walla Walla</div>
           <div className='Image-author'>Christian</div>
         </div>
       </body>
@@ -67,8 +67,20 @@ function SignUpButton({onClick}) {
   );
 }
 
-function Photo() {
+function Photo1() {
   return (
     <img className='Image' src="https://assets.vogue.com/photos/5ac7f427f7e0937aae45b143/master/w_2560%2Cc_limit/00-story-image-washington-state-wine-country-guide.jpg" /> 
+  );
+}
+
+function Photo2() {
+  return (
+    <img className='Image' src="https://www.ocregister.com/wp-content/uploads/2023/05/OCR-L-TR-WALLAWALLA-0528-01.jpg?w=1024" />
+  );
+}
+
+function Photo3() {
+  return (
+    <img className='Image' src="https://a.travel-assets.com/findyours-php/viewfinder/images/res70/193000/193737-Walla-Walla-And-Vicinity.jpg" />
   );
 }
